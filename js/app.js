@@ -17,7 +17,7 @@ const App = {
     this.setupStatusButton();
     this.checkFirstRun();
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+      navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
     }
   },
   applyTheme() {
