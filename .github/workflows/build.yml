@@ -1,61 +1,43 @@
-name: Build and Release
+name: Build APK
+
 on:
   push:
     tags:
       - 'v*'
   workflow_dispatch:
+
 jobs:
-  build-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install
-      - run: npm run build:win
-      - uses: actions/upload-artifact@v4
-        with:
-          name: 菠萝2号-Windows
-          path: dist/菠萝2号-Setup-*.exe
-  build-linux:
+  build-apk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+
       - run: npm install
-      - run: npm run build:linux
+      - run: npx cap add android
+      - run: cd android && ./gradlew assembleDebug
+
       - uses: actions/upload-artifact@v4
         with:
-          name: 菠萝2号-Linux
-          path: dist/菠萝2号-*.AppImage
-  build-macos:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install
-      - run: npm run build:mac
-      - uses: actions/upload-artifact@v4
-        with:
-          name: 菠萝2号-macOS
-          path: dist/菠萝2号-*.dmg
+          name: boluo2-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
   release:
-    needs: [build-windows, build-linux, build-macos]
+    needs: build-apk
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/download-artifact@v4
       - uses: softprops/action-gh-release@v1
         with:
-          files: |
-            菠萝2号-Windows/*
-            菠萝2号-Linux/*
-            菠萝2号-macOS/*
+          files: boluo2-apk/app-debug.apk
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
