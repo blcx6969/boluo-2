@@ -1,8 +1,7 @@
 {
   "appId": "com.boluo2.app",
   "appName": "菠萝2号",
-  "webDir": ".",
-  "bundledWebRuntime": false,
+  "webDir": "dist",
   "server": {
     "androidScheme": "https",
     "cleartext": true
