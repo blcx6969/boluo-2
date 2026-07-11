@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#6c5ce7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<title>菠萝2号</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Header -->
+  <header id="app-header">
+    <div class="header-left">
+      <span class="title">菠萝2号</span>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" id="btn-status" aria-label="System Status">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Views -->
+  <main id="main-content">
+    <!-- Dashboard -->
+    <section id="page-dashboard" class="page active">
+      <div class="dashboard-grid" id="dashboard-grid">
+        <div class="status-card" data-service="deepseek">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="info"><span class="label">DeepSeek</span><span class="card-status pending">待配置</span></div>
+        </div>
+        <div class="status-card" data-service="cellclaw">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5-3 9-10 12C5 21 2 17 2 12A10 10 0 0 1 12 2z"/><path d="M12 8v4l2 2"/></svg></div>
+          <div class="info"><span class="label">CellClaw</span><span class="card-status pending">待配置</span></div>
+        </div>
+        <div class="status-card" data-service="tasker">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="info"><span class="label">Tasker</span><span class="card-status pending">待配置</span></div>
+        </div>
+        <div class="status-card" data-service="mcp">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+          <div class="info"><span class="label">MCP</span><span class="card-status pending">待配置</span></div>
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button class="action-btn" data-action="chat"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> 开始对话</button>
+        <button class="action-btn" data-action="agents"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> 管理代理</button>
+        <button class="action-btn" data-action="mcp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> MCP 连接</button>
+      </div>
+    </section>
+
+    <!-- Chat -->
+    <section id="page-chat" class="page chat-page">
+      <div class="chat-messages" id="chat-messages">
+        <div class="msg ai">
+          <div class="avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="bubble"><p>你好老大！我是你的 AI Agent Hub。已连接到 DeepSeek 后端，随时可以开始工作。</p><p>需要我做什么？</p></div>
+        </div>
+      </div>
+      <div class="chat-input-bar">
+        <textarea id="chat-input" rows="1" placeholder="输入消息..." enterkeyhint="send"></textarea>
+        <button id="btn-send" class="send" aria-label="发送">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Agents -->
+    <section id="page-agents" class="page">
+      <div class="agents-list">
+        <div class="agent-card" data-agent="cellclaw">
+          <div class="head">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5-3 9-10 12C5 21 2 17 2 12A10 10 0 0 1 12 2z"/><path d="M12 8v4l2 2"/></svg></div>
+            <div class="info"><span class="name">CellClaw</span><span class="desc">手机操作代理</span></div>
+            <label class="toggle"><input type="checkbox" id="cellclaw-toggle"><span class="slider"></span></label>
+          </div>
+          <div class="body">
+            <div class="row"><label>API 地址</label><input type="url" id="cellclaw-url" placeholder="http://192.168.1.x:9090" class="config-input"></div>
+            <div class="row"><label>API Key</label><input type="password" id="cellclaw-key" placeholder="可选" class="config-input"></div>
+            <div class="actions">
+              <button class="btn test-btn btn-primary" data-agent="cellclaw">测试连接</button>
+              <select id="cellclaw-commands" class="cmd-select"><option value="">发送命令...</option><option value="click">点击</option><option value="swipe">滑动</option><option value="type">输入</option><option value="screenshot">截图</option><option value="back">返回</option><option value="home">主页</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="agent-card" data-agent="tasker">
+          <div class="head">
+            <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="info"><span class="name">Tasker</span><span class="desc">自动化引擎</span></div>
+            <label class="toggle"><input type="checkbox" id="tasker-toggle"><span class="slider"></span></label>
+          </div>
+          <div class="body">
+            <div class="row"><label>Web 地址</label><input type="url" id="tasker-url" placeholder="http://192.168.1.x:8080" class="config-input"></div>
+            <div class="workflow-list" id="tasker-workflows">
+              <div class="workflow-item">
+                <select class="tasker-action"><option value="">选择触发事件...</option><option value="time">定时触发</option><option value="notification">通知监听</option><option value="app">应用启动</option><option value="battery">电量变化</option></select>
+                <select class="tasker-action"><option value="">选择动作...</option><option value="cellclaw">调用 CellClaw</option><option value="notify">发送通知</option><option value="http">HTTP 请求</option><option value="mcp">MCP 查询</option></select>
+                <button class="btn icon-only add-workflow">+</button>
+              </div>
+            </div>
+            <button class="btn save-workflows">保存工作流</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MCP -->
+    <section id="page-mcp" class="page">
+      <div class="mcp-list">
+        <div class="mcp-item" data-server="calendar">
+          <div class="row"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <span>日历</span><span class="tag">Google / Outlook</span><button class="mcp-connect" data-server="calendar">连接</button></div>
+        </div>
+        <div class="mcp-item" data-server="cloud">
+          <div class="row"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+          <span>云盘</span><span class="tag">OneDrive / Google Drive</span><button class="mcp-connect" data-server="cloud">连接</button></div>
+        </div>
+        <div class="mcp-item" data-server="knowledge">
+          <div class="row"><div class="icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <span>知识库</span><span class="tag">Notion / Local</span><button class="mcp-connect" data-server="knowledge">连接</button></div>
+        </div>
+        <div class="mcp-manual">
+          <h3>自定义 MCP 服务器</h3>
+          <div id="custom-mcps"></div>
+          <button class="btn add-mcp" id="btn-add-mcp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> 添加自定义服务器</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section id="page-settings" class="page">
+      <div class="settings-list">
+        <div class="settings-group">
+          <h3>DeepSeek API</h3>
+          <div class="row"><label>API Key</label><input type="password" id="setting-deepseek-key" placeholder="sk-..." class="config-input"></div>
+          <div class="row"><label>API 地址</label><input type="url" id="setting-deepseek-url" value="https://api.deepseek.com" class="config-input"></div>
+          <div class="row"><label>模型</label><select id="setting-deepseek-model" class="config-input"><option value="deepseek-chat">deepseek-chat</option><option value="deepseek-reasoner">deepseek-reasoner</option></select></div>
+        </div>
+        <div class="settings-group">
+          <h3>MCP 隧道</h3>
+          <div class="row"><label>MCP 服务地址</label><input type="url" id="setting-mcp-host" placeholder="ws://localhost:8080/mcp" class="config-input"></div>
+          <div class="row"><label>自动重连</label><label class="toggle"><input type="checkbox" id="setting-mcp-reconnect" checked><span class="slider"></span></label></div>
+        </div>
+        <div class="settings-group">
+          <h3>外观</h3>
+          <div class="row"><label>主题</label><select id="setting-theme" class="config-input"><option value="dark">深色</option><option value="light">浅色</option><option value="auto">跟随系统</option></select></div>
+        </div>
+        <div class="settings-group">
+          <h3>关于</h3>
+          <div class="about-info"><p>AI Agent Hub v1.0.0</p><p>为老大打造的专属 AI 助手</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav id="bottom-nav">
+    <button class="nav-item active" data-page="dashboard">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>首页</span>
+    </button>
+    <button class="nav-item" data-page="chat">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>对话</span>
+    </button>
+    <button class="nav-item" data-page="agents">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <span>代理</span>
+    </button>
+    <button class="nav-item" data-page="mcp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>MCP</span>
+    </button>
+    <button class="nav-item" data-page="settings">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <span>设置</span>
+    </button>
+  </nav>
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/agents.js"></script>
+<script src="js/mcp.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>
+
+

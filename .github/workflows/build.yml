@@ -1,0 +1,61 @@
+name: Build and Release
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build:win
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 菠萝2号-Windows
+          path: dist/菠萝2号-Setup-*.exe
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build:linux
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 菠萝2号-Linux
+          path: dist/菠萝2号-*.AppImage
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run build:mac
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 菠萝2号-macOS
+          path: dist/菠萝2号-*.dmg
+  release:
+    needs: [build-windows, build-linux, build-macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/download-artifact@v4
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            菠萝2号-Windows/*
+            菠萝2号-Linux/*
+            菠萝2号-macOS/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
