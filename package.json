@@ -2,90 +2,20 @@
   "name": "boluo-2",
   "version": "1.0.0",
   "description": "菠萝2号 - 专属AI助手桌面客户端",
-  "main": "main.js",
   "author": "菠萝2号",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "electron .",
-    "build:win": "electron-builder --win --x64",
-    "build:linux": "electron-builder --linux --x64",
-    "build:mac": "electron-builder --mac --x64",
-    "build:all": "electron-builder --win --linux --mac --x64",
-    "pack": "electron-builder --dir"
+    "serve": "npx serve . -p 3000",
+    "build:apk": "npx cap sync && cd android && ./gradlew assembleDebug",
+    "cap:sync": "npx cap sync",
+    "cap:open:android": "npx cap open android",
+    "release": "npx cap sync && cd android && ./gradlew bundleRelease"
   },
   "devDependencies": {
-    "electron": "^28.0.0",
-    "electron-builder": "^24.0.0"
-  },
-  "build": {
-    "appId": "com.aiagent.hub",
-    "productName": "菠萝2号",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "main.js",
-      "preload.js",
-      "index.html",
-      "manifest.json",
-      "css/**/*",
-      "js/**/*",
-      "icons/**/*",
-      "installer/**/*"
-    ],
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "icon": "icons/icon-512.png",
-      "artifactName": "菠萝2号-Setup-${version}.${ext}"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "菠萝2号",
-      "installerIcon": "icons/icon-512.png",
-      "uninstallerIcon": "icons/icon-512.png",
-      "include": "installer/nsis-config.nsh"
-    },
-    "linux": {
-      "target": [
-        {
-          "target": "AppImage",
-          "arch": [
-            "x64"
-          ]
-        },
-        {
-          "target": "deb",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "icon": "icons",
-      "category": "Utility"
-    },
-    "mac": {
-      "target": [
-        {
-          "target": "dmg",
-          "arch": [
-            "x64"
-          ]
-        }
-      ],
-      "icon": "icons/icon-512.png",
-      "category": "public.app-category.utilities"
-    }
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/android": "^6.0.0",
+    "serve": "^14.0.0"
   }
 }
-
